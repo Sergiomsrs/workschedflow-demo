@@ -20,11 +20,11 @@ export const MainPage = () => {
         <ScrollToTop />
         <main className="">
           <Routes>
-            <Route path="/" element={<Daily />} />
-            <Route path="/employeeweek" element={<EmployeeWeek />} />
-            <Route path="/landing" element={<Landing />} />
-            <Route path="/adduser" element={<FormUser />} />
-            <Route path="/techinfo" element={<TechInfo />} />
+            <Route path="/workschedflow-demo/" element={<Daily />} />
+            <Route path="/workschedflow-demo/employeeweek" element={<EmployeeWeek />} />
+            <Route path="/workschedflow-demo/landing" element={<Landing />} />
+            <Route path="/workschedflow-demo/adduser" element={<FormUser />} />
+            <Route path="/workschedflow-demo/techinfo" element={<TechInfo />} />
           </Routes>
         </main>
 
