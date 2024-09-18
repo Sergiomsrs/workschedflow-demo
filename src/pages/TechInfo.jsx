@@ -19,22 +19,22 @@ export const TechInfo = () => {
           <Projects
             title={"Esquema de la Base de Datos"}
             description={"Cada uno de los tres atributos actuales en la base de datos (turno, jornada y equipo) cuenta con una fecha de inicio y de finalización. Esto permite realizar consultas precisas, obteniendo los datos correspondientes según el intervalo de tiempo solicitado."}
-            image={"/bdScheme.webp"}
+            image={"/workschedflow-demo/bdScheme.webp"}
           />
           <Projects
             title={"Flujo de trabajo"}
             description={"El flujo de trabajo para la creación de horarios comienza con una solicitud a la API basada en dos fechas. A partir de esta petición, se obtienen los empleados activos y sus respectivos atributos dentro del rango de fechas especificado."}
-            image={"/DiagramaAppWebP.webp"}
+            image={"/workschedflow-demo/DiagramaAppWebP.webp"}
           />
           <Projects
             title={"Petición a la base de datos"}
             description={"Cuando la petición llega a la API, esta consulta toda la información necesaria en la base de datos. Se ha optado por utilizar JpaRepository para realizar la consulta, lo que permite gestionar fácilmente los casos en los que no haya datos y se deban generar valores por defecto."}
-            image={"/query.webp"}
+            image={"/workschedflow-demo/query.webp"}
           />
           <Projects
             title={"Esquema de respuesta"}
             description={"La respuesta devuelta a la aplicación es un arreglo de días, el cual se renderiza mediante componentes de React para formar la vista de horarios que se presenta en la demo."}
-            image={"/timeIntervalScheme.webp"}
+            image={"/workschedflow-demo/timeIntervalScheme.webp"}
           />
 
         </section>
@@ -51,7 +51,7 @@ export const TechInfo = () => {
         </ul>
       </section>
       <div className='pt-4'>
-        <LinkButton to={"/landing"}>Volver</LinkButton>
+        <LinkButton to={"/workschedflow-demo/landing"}>Volver</LinkButton>
       </div>
     </section>
   )

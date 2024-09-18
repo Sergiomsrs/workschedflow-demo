@@ -77,37 +77,37 @@ export const Landing = () => {
           <h3 className="text-2xl font-semibold mb-4">Conoce la App: Versión Demo</h3>
         <section className="flex justify-start gap-4 mb-4">
           <LinkButton to={"/"}>Ir a la Demo</LinkButton>
-          <LinkButton to={"/techinfo"}>Detrás del Desarrollo</LinkButton>
+          <LinkButton to={"/workschedflow-demo/techinfo"}>Detrás del Desarrollo</LinkButton>
         </section>
           <Projects
             title={"Barra de Navegación"}
             description={"Desde la barra de navegación, podrás acceder a la información de la aplicación, una versión de demostración, y la vista de resumen por empleado."}
-            image={"/navbar.webp"}
+            image={"/workschedflow-demo/navbar.webp"}
           />
           <Projects
             title={"Área de trabajo"}
             description={"Esta es el área de trabajo propuesta, donde cada franja horaria representa un intervalo de 15 minutos. Los turnos pueden añadirse y eliminarse con facilidad, y puedes visualizar de manera intuitiva la duración de cada turno y el número de empleados por franja horaria."}
-            image={"/general.webp"}
+            image={"/workschedflow-demo/general.webp"}
           />
           <Projects
             title={"Control de turnos desactivados"}
             description={"Ciertos turnos pueden ser desactivados para garantizar el cumplimiento de las restricciones aplicables. Esto se realiza desactivando las franjas horarias correspondientes, como se ilustra en el siguiente ejemplo. Las franjas horarias que no están disponibles se muestran desactivadas y quedan inhabilitadas para selección. Por ejemplo, las franjas horarias se desactivan automáticamente hasta que se hayan cumplido 12 horas desde la salida del turno de trabajo del día anterior."}
-            image={"/disabledcheck.webp"}
+            image={"/workschedflow-demo/disabledcheck.webp"}
           />
           <Projects
             title={"Control de filtros"}
             description={"En el encabezado del área de trabajo, se encuentran dos filtros clave: el primero permite seleccionar un rango de fechas para ajustar la visualización según el intervalo deseado, ofreciendo flexibilidad en la gestión del tiempo. El segundo filtro facilita la visualización del personal por equipo de trabajo, simplificando la organización y gestión en grandes equipos."}
-            image={"/filtrado.webp"}
+            image={"/workschedflow-demo/filtrado.webp"}
           />
           <Projects
             title={"Pie de zona de trabajo"}
             description={"En el pie de zona, se ofrece la opción de guardar o resetear el área de trabajo, además de proporcionar un resumen detallado del intervalo de tiempo seleccionado. Se puede visualizar una imagen clara de las jornadas de los trabajadores, incluyendo sus horas totales, la diferencia entre las horas trabajadas y contratadas, así como un desglose visual de las horas trabajadas por día."}
-            image={"/resumen.webp"}
+            image={"/workschedflow-demo/resumen.webp"}
           />
           <Projects
             title={"Resumen de turnos por empleado"}
             description={"En la pestaña Resumen de Turnos por Empleado encontrarás un listado detallado de turnos en formato horario. Esta sección detecta automáticamente los turnos partidos y ofrece una vista clara e intuitiva para los empleados."}
-            image={"/resumenSemanal.webp"}
+            image={"/workschedflow-demo/resumenSemanal.webp"}
           />
         </section>
       </div>
