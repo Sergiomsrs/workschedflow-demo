@@ -9,10 +9,10 @@ import { AppProvider } from './context/AppProvider'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <AppProvider>
         <MainPage />
       </AppProvider>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>,
 )
