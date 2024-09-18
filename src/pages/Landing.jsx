@@ -10,7 +10,7 @@ export const Landing = () => {
         <section class="pt-24 pb-10">
           <img
             class="rounded-full size-16 mb-4"
-            src="./sergio.webp"
+            src="../sergio.webp"
             alt="sergio photo"
           />
           <h1
