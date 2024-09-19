@@ -10,15 +10,15 @@ import { ScrollToTop } from "../landing/ScrollToTop "
 export const MainPage = () => {
   return (
     
-    <div className="bg-gray-100 text-gray-900 w-full min-h-screen overflow-x-hidden" >
+    <div  className="bg-gray-100 text-gray-900 min-h-screen w-full max-w-full overflow-x-hidden px-1 sm:px-8 lg:px-16">
       
-      <div className="container mx-auto px-16 w-full py-8" >
+      <div className="container w-full py-8" >
 
         <header className="mb-8">
           <Navbar />
         </header>
         <ScrollToTop />
-        <main className="">
+        <main className="flex flex-col ">
           <Routes>
             <Route path="/" element={<Daily />} />
             <Route path="/workschedflow-demo/" element={<Daily />} />
