@@ -10,9 +10,9 @@ import { ScrollToTop } from "../landing/ScrollToTop "
 export const MainPage = () => {
   return (
     
-    <div className="bg-gray-100 text-gray-900 min-h-screen">
+    <div className="bg-gray-100 text-gray-900 w-full min-h-screen overflow-x-hidden" >
       
-      <div className="container mx-auto px-16 max-w-full py-8" >
+      <div className="container mx-auto px-16 w-full py-8" >
 
         <header className="mb-8">
           <Navbar />
