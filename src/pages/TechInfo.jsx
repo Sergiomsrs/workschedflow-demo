@@ -4,7 +4,10 @@ import { Projects } from '../landing/Projects'
 
 export const TechInfo = () => {
   return (
-    <section className="px-40 pt-20 bg-gray-100">
+    
+    <div className="flex flex-col justify-center items-center w-full">
+
+    <section className=" bg-gray-100 w-4/5 ">
       <div className="bg-gray-100">
         <main className="">
           <section className="">
@@ -54,5 +57,6 @@ export const TechInfo = () => {
         <LinkButton to={"/workschedflow-demo/landing"}>Volver</LinkButton>
       </div>
     </section>
+    </div>
   )
 }
