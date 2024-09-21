@@ -21,7 +21,6 @@ WorkSchedFlow está construida utilizando un stack moderno de tecnologías:
 - **Frontend**: [React](https://reactjs.org/) con [Tailwind CSS](https://tailwindcss.com/)
 - **Backend**: [Spring Boot](https://spring.io/projects/spring-boot)
 - **Base de datos**: [MySQL](https://www.mysql.com/)
-- **Despliegue**: Aplicación lista para despliegue en entornos de producción.
 
 ## Enlaces al Repositorio
 
