@@ -14,6 +14,44 @@ export const generateData = () => {
   }));
 };
 
+export const getDatesInRange = (startDate, endDate) => {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const dates = [];
+
+  // Validar las fechas
+  if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+    console.error("Fechas inválidas:", startDate, endDate);
+    return [];
+  }
+
+  // Iterar desde la fecha de inicio hasta la de fin
+  for (let currentDate = new Date(start); currentDate <= end; currentDate.setDate(currentDate.getDate() + 1)) {
+    dates.push(new Date(currentDate).toISOString().split('T')[0]); // Formato YYYY-MM-DD
+  }
+
+  return dates;
+};
+
+export const generatePtoWithDate = (id, dates) => {
+  return dates.map(date => ({
+    employeeId: id,
+    hours: Array(62).fill("PTO"),
+    date: date,
+    shiftDuration: '00:00'
+  }));
+};
+
+export const generatePtoNullWithDate = (id, dates) => {
+  return dates.map(date => ({
+    employeeId: id,
+    hours: Array(62).fill("Null"),
+    date: date,
+    shiftDuration: '00:00'
+  }));
+};
+
+
 export const generateDatawithDate = (dates) => {
 
   return dates.map(day => (
@@ -46,15 +84,11 @@ export const generateDays = (date) => {
 }
 
 export const obtenerPreviousDay = (dayIndex, data) => {
-  if (dayIndex === 0) {
-    return data[data.length - 7];
-  } else {
     return data[dayIndex - 1];
-  }
 }
 
 export const calcularshiftDuration = (h) => {
-  const shiftDurationInMinutes = h.filter(item => item !== "Null").length * 15;
+  const shiftDurationInMinutes = h.filter(item => item !== "Null" && item !== "PTO" ).length * 15;
   const hoursshiftDuration = Math.floor(shiftDurationInMinutes / 60);
   const minutesshiftDuration = shiftDurationInMinutes % 60;
   const shiftDurationFormatted = `${String(hoursshiftDuration).padStart(2, "0")}:${String(minutesshiftDuration).padStart(2, "0")}`;
@@ -72,8 +106,9 @@ export const addMinutes = (time, minsToAdd) => {
 }
 
 export const getHighestNonZeroIndex = (array) => {
+  if(array == null) return -1;
   for (let i = array.length - 1; i >= 0; i--) {
-    if (array[i] !== "Null") {
+    if (array[i] !== "Null" && array[i] !== "PTO") {
       return i;
     }
   }
@@ -82,12 +117,19 @@ export const getHighestNonZeroIndex = (array) => {
 
 // Formatea de HH:mm:ss a HH:mm
 export function formatTime(timeString) {
- 
-  if (timeString.length === 8) {
-      return timeString.substring(0, 5); 
+  // Verifica si timeString es una cadena de texto y tiene una longitud válida
+  if (typeof timeString === 'string' && timeString.length === 8) {
+    return timeString.substring(0, 5); // Formatea el tiempo si es válido
   }
-  return timeString; 
+  return timeString || "N/A"; // Devuelve timeString o un valor predeterminado si es undefined o null
 }
+
+
+export const generatePtoShift = (id, startDate, endDate) => {
+  const shifts = [];
+
+};
+
 
 
 
@@ -108,11 +150,17 @@ export const generateShiftData = (dt) => {
 };
 
 
-export const formatDate = (day) => {
+export const formatDate = (day, hol) => {
   const date = new Date(day.id);
   const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
   const formattedDate = date.toLocaleDateString('es-ES', options).replace(/\//g, '-');
-  return `${day.day.charAt(0).toUpperCase() + day.day.slice(1)} ${formattedDate}`;
+  const isHoliday = hol.includes(day.id);
+  
+  console.log(day.id);
+  console.log(hol);
+  console.log(isHoliday);
+  return `${day.day.charAt(0).toUpperCase() + day.day.slice(1)} ${formattedDate} ${isHoliday ? '🎉' : ''}`;
+
 };
 
 export const formatToDate = (day) => {
@@ -121,6 +169,26 @@ export const formatToDate = (day) => {
   const formattedDate = date.toLocaleDateString('es-ES', options).replace(/\//g, '-');
   return formattedDate;
 };
+
+
+export const uniqueEmployeeName = (data) => {
+    // Creamos un Set para almacenar nombres únicos de empleados
+    const employeeNamesSet = new Set();
+
+    // Iteramos sobre cada día en el array data
+    data.forEach(day => {
+      // Iteramos sobre cada empleado en el día actual
+      day.employees.forEach(employee => {
+        // Agregamos el nombre del empleado al Set
+        employeeNamesSet.add(employee.name);
+      });
+    });
+  
+    // Convertimos el Set a un array, si necesitas el resultado en formato array
+    const uniqueEmployeeNames = Array.from(employeeNamesSet);
+
+    return uniqueEmployeeNames;
+}
 
 
 

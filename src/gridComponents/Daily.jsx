@@ -10,11 +10,13 @@ import { AppContext } from "../context/AppContext";
 import { SectionPicker } from "../utilComponents/SectionPicker";
 import { RDias } from "../gridComponents/RDias";
 import { JobHourApp } from "./JobHourApp";
+import { MenuIcon } from "../icon/MenuIcon";
 
 
 export const Daily = () => {
 
-  const { data, setData, date, setDate, setSelectedOption } = useContext(AppContext);
+
+  const { data, setData, date, setDate, setSelectedOption, holidayDates } = useContext(AppContext);
 
   const handleHourChange = (dayIndex, employeeIndex, hourIndex, value) => {
     const newData = [...data];
@@ -24,8 +26,9 @@ export const Daily = () => {
   };
 
   const handlePrint = () => {
-/*
+
     const shiftData = generateShiftData(data);
+    console.log(shiftData);
 
     fetch('http://localhost:8081/api/ws/saveAll', {
       method: 'POST',
@@ -38,9 +41,7 @@ export const Daily = () => {
       .then(response => response.json())
       .then(data => console.log('Success:', data))
       .catch((error) => console.error('Error:', error));
-  
-  */
-      };
+  };
 
   const handlReset = () => {
     setData(prevData =>
@@ -56,17 +57,20 @@ export const Daily = () => {
   };
 
 
+
+
   return (
-    <section className="p-4">
+    <section className="max-w-full p-4">
       <DatePicker data={data} date={date} setDate={setDate} setData={setData} setSelectedOption={setSelectedOption} />
       <SectionPicker />
-      <div className="border rounded-lg shadow-md overflow-x-auto p-4 ">  {/*incorporar zoom en este div*/}
+      <div className="border rounded-lg shadow-md overflow-x-auto max-w-full p-4">  {/*incorporar zoom en este div*/}
+        <MenuIcon />
         {data.map((day, dayIndex) => (dayIndex !== 0 &&
           <div key={day.id}>
             <div className="text-center text-lg font-bold mt-4 mb-4">
               <div className="text-center text-lg font-bold mt-4">
                 <div className="inline-block bg-gray-800 text-white text-sm font-semibold px-2 py-1 rounded-full">
-                  {formatDate(day)}
+                  {formatDate(day, holidayDates)}
                 </div>
               </div>
             </div>
@@ -74,7 +78,6 @@ export const Daily = () => {
               <HeadRow />
               <JobHourApp
                 day={day}
-                dayIndex={dayIndex}
                 eh={obtenerPreviousDay(dayIndex, data).employees}
                 employees={day.employees}
                 onHourChange={(employeeIndex, hourIndex, value) =>
@@ -84,12 +87,13 @@ export const Daily = () => {
             </DayGrid>
           </div>
         ))}
-        <div className="w-full flex mt-4 flex-row px-2 ">
-         
-            <Resumen employess={employess}/>
-            <RDias />
-          
+
+        <div className="flex flex-row my-8 gap-2 overflow-x-auto max-w-screen-xl bg-white rounded-lg shadow-md p-6 border-t-4 border-blue-500">
+          <Resumen className="flex-none w-max" employess={employess} />
+          <RDias className="flex-none w-max" />
         </div>
+
+
         <div className="flex gap-4">
           <button onClick={handlePrint} type="button" className="bg-emerald-700 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded min-w-32">Guardar</button>
           <button onClick={handlReset} type="button" className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded min-w-32">Reset</button>

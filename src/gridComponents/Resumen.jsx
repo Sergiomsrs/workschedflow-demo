@@ -1,59 +1,79 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
+import { uniqueEmployeeName } from "../utils/function";
 
 
 export const Resumen = () => {
-  const { data, selectedOption } = useContext(AppContext);
-  const [shiftDurationHoursByEmployee, setshiftDurationHoursByEmployee] = useState({});
+  const { data, selectedOption, holidayDates } = useContext(AppContext);
 
-  useEffect(() => {
-    const dataWeek = data.slice(1, data.length + 1);
-    const shiftDurationHours = {};
+  const uniqueEmployeeNames = uniqueEmployeeName(data);
 
-    dataWeek.forEach(day => {
-      day.employees.forEach(employee => {
-        const employeeName = employee.name;
+  // Función para calcular la duración total en formato decimal
+  const getTotalShiftDuration = (employeeName) => {
+    let totalMinutes = 0;
 
-        if (!shiftDurationHours[employeeName]) {
-          shiftDurationHours[employeeName] = 0;
-        }
-
-        const shiftDurationHoursForDay = employee.workShift.filter(item => item !== "Null").length * 0.25;
-        shiftDurationHours[employeeName] += shiftDurationHoursForDay;
-      });
+    // Iteramos sobre los días para obtener la duración de cada turno del empleado
+    data.forEach(day => {
+      const employee = day.employees.find(emp => emp.name === employeeName);
+      if (employee && employee.shiftDuration) {
+        const [hours, minutes] = employee.shiftDuration.split(":").map(Number);
+        totalMinutes += hours * 60 + minutes; // Convertimos todo a minutos
+      }
     });
 
-    setshiftDurationHoursByEmployee(shiftDurationHours);
-  }, [data]);
+    const totalHoursDecimal = totalMinutes / 60;
+    return totalHoursDecimal.toFixed(2);
+  };
 
   return (
-    
-      <table className="table table-hover text-center">
-        <thead>
-          <tr>
-            <th>Empleado</th>
-            <th>wwh</th>
-            <th>Total</th>
-            <th>Var</th>
-          </tr>
-        </thead>
-        <tbody>
-  {Object.entries(shiftDurationHoursByEmployee).map(([name, shiftDuration]) => {
-    const employee = data[0]?.employees.find((emp) => emp.name === name);
-    if (selectedOption === "todos" || selectedOption === employee?.teamWork) {
-      return (
-        <tr key={name}>
-          <td>{name}</td>
-          <td>{employee?.wwh}</td>
-          <td>{shiftDuration}</td>
-          <td>{(employee?.wwh ?? 0) - shiftDuration}</td>
+    <table className="table table-hover text-center w-1/3 mb-0">
+      <thead>
+        <tr>
+          <th className="text-left">Empleado</th>
+          <th>wwh</th>
+          <th>Total</th>
+          <th>Var</th>
         </tr>
-      );
-    }
-    return null;
-  })}
-</tbody>
-      </table>
-   
+      </thead>
+      <tbody>
+        {uniqueEmployeeNames.map(employeeName => {
+          const employeeNameTrimmed = employeeName.trim(); // Limpiar espacios
+          const wwh = Math.round(
+            (data.slice(1).reduce((acc, day) => {
+              const employee = day.employees.find(emp => emp.name === employeeNameTrimmed);
+              
+              // Verificar si el día es festivo
+              const isHoliday = holidayDates.includes(day.id);
+          
+              // Solo sumar las horas si el día no es festivo y el empleado existe
+              if (employee && !isHoliday) {
+                return acc + (employee.wwh / 7);
+              }
+              return acc;
+            }, 0) * 2) / 2
+          );
+
+          const totalShiftDuration = getTotalShiftDuration(employeeNameTrimmed);
+
+          const variation = wwh - totalShiftDuration;
+
+          // Filtramos por equipo de trabajo si se ha seleccionado un filtro
+          const selectedEmployeeTeam = data
+            .flatMap(day => day.employees)
+            .find(employee => employee.name === employeeNameTrimmed)?.teamWork;
+
+          return (
+            (selectedOption === "todos" || selectedOption === selectedEmployeeTeam) && (
+              <tr key={employeeNameTrimmed}>
+                <td className="text-left">{employeeNameTrimmed}</td>
+                <td>{wwh}</td>
+                <td>{totalShiftDuration}</td>
+                <td>{variation.toFixed(2)}</td> 
+              </tr>
+            )
+          );
+        })}
+      </tbody>
+    </table>
   );
-};
+};;
