@@ -6,26 +6,28 @@ import { EmployeeWeek } from "./EmployeeWeek"
 import { Daily } from "../gridComponents/Daily"
 import { TechInfo } from "./TechInfo"
 import { ScrollToTop } from "../landing/ScrollToTop "
+import { Add } from "./Add"
 
 export const MainPage = () => {
   return (
     
     <div  className="bg-gray-100 text-gray-900 min-h-screen w-full max-w-full overflow-x-hidden px-1 sm:px-8 lg:px-16">
       
-      <div className="container w-full py-8" >
+      <div className="container grid min-h-[100dvh] max-w-full grid-rows-[auto_1fr_auto]" >
 
         <header className="mb-8">
           <Navbar />
         </header>
         <ScrollToTop />
-        <main className="flex flex-col ">
+        <main className="flex flex-col items-center max-w-full">
           <Routes>
             <Route path="/" element={<Daily />} />
             <Route path="/workschedflow-demo/" element={<Daily />} />
             <Route path="/workschedflow-demo/employeeweek" element={<EmployeeWeek />} />
             <Route path="/workschedflow-demo/landing" element={<Landing />} />
-            <Route path="/workschedflow-demo/adduser" element={<FormUser />} />
+           
             <Route path="/workschedflow-demo/techinfo" element={<TechInfo />} />
+            <Route path="/workschedflow-demo/add" element={<Add />} />
           </Routes>
         </main>
 
