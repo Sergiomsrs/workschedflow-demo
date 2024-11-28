@@ -80,7 +80,7 @@ export const AddDisp = () => {
                     onChange={handleEmployeeSelect}
                     className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-600 focus:border-indigo-500 sm:text-sm py-1.5"
                 >
-                    <option value="">-- Seleccione un empleado --</option>
+                    <option value="">Ross Geller</option>
                     {employees.map(employee => (
                         <option key={employee.id} value={employee.id}>
                             {employee.name} {employee.lastName}

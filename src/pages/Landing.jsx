@@ -103,12 +103,12 @@ export const Landing = () => {
             />
           <Projects
             title={"Pie de zona de trabajo"}
-            description={"En el pie de zona, se ofrece la opción de guardar o resetear el área de trabajo, además de proporcionar un resumen detallado del intervalo de tiempo seleccionado. Se puede visualizar una imagen clara de las jornadas de los trabajadores, incluyendo sus horas totales, la diferencia entre las horas trabajadas y contratadas, así como un desglose visual de las horas trabajadas por día."}
+            description={"En esta sección, puedes guardar o restablecer fácilmente el área de trabajo según tus necesidades. También se presenta un resumen detallado del intervalo de tiempo seleccionado, ofreciendo una visión clara de las jornadas laborales de los empleados. Este resumen incluye las horas totales trabajadas, la diferencia con las horas contratadas y un desglose visual de las horas trabajadas por día. Además, en la zona de resumen por días, el sistema detecta automáticamente los días festivos y ajusta la base de horas del empleado en consecuencia, asegurando un cálculo preciso y eficiente."}
             image={"/workschedflow-demo/resumen.webp"}
             />
           <Projects
             title={"Resumen de turnos por empleado"}
-            description={"En la pestaña Resumen de Turnos por Empleado encontrarás un listado detallado de turnos en formato horario. Esta sección detecta automáticamente los turnos partidos y ofrece una vista clara e intuitiva para los empleados."}
+            description={"Explora un listado detallado de los turnos laborales en un formato claro y estructurado. Esta sección identifica automáticamente los turnos partidos y presenta una vista intuitiva y fácil de entender para cada empleado. Además, ofrece un resumen completo del período seleccionado, incluyendo la base de horas programadas, las horas ya trabajadas y las pendientes por gestionar."}
             image={"/workschedflow-demo/resumenSemanal.webp"}
             />
         </section>
