@@ -43,9 +43,9 @@ export const HorizontalBar = ({ username, hours, onHourChange, teamWork, shiftDu
   };
   
   const getBackgroundClass = (value) => {
-    if (value === "PTO") return 'bg-red-300 '; // Por ejemplo, amarillo para PTO
+    if (value === "PTO") return 'bg-red-300 '; 
     if (value === "Null") return 'bg-neutral-200';
-    return 'bg-indigo-500'; // Default para otros valores
+    return 'bg-indigo-500'; 
   };
 
 

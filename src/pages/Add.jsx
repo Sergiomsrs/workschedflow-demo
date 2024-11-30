@@ -39,10 +39,11 @@ export const Add = () => {
   }
 
   return (
-    <div className='w-3/4'>
+    <div className="w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-2/3 mx-auto">
 
 
-
+<div className="border rounded-lg shadow-md overflow-x-auto p-4 ">
+<div className='mb-6'>
       <ul className="flex ml-2 ">
         <li className="-mb-px mr-1 cursor-pointer">
           <a
@@ -92,7 +93,7 @@ export const Add = () => {
 
       </ul>
 
-      <div className="border rounded-lg shadow-md overflow-x-auto p-4 ">
+      </div>
 
 
         {content
