@@ -19,7 +19,7 @@ export const MainPage = () => {
           <Navbar />
         </header>
         <ScrollToTop />
-        <main className="flex flex-col items-center max-w-full">
+        <main className="flex flex-col items-center max-w-full overflow-auto ">
           <Routes>
             <Route path="/" element={<Daily />} />
             <Route path="/workschedflow-demo/" element={<Daily />} />

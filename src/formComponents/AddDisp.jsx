@@ -13,9 +13,9 @@ const disp = [
             "terminationDate": "2024-12-31"
         },
         "absenceReason": "Motivos personales",
-        "date": "2024-11-11",
-        "startHour": "14:00",
-        "terminationHour": "17:30"
+        "date": "2024-09-02",
+        "startHour": "11:00",
+        "terminationHour": "13:00"
     }
 ];
 
@@ -80,7 +80,7 @@ export const AddDisp = () => {
                     onChange={handleEmployeeSelect}
                     className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-600 focus:border-indigo-500 sm:text-sm py-1.5"
                 >
-                    <option value="">Ross Geller</option>
+                    <option value="">Monica Geller</option>
                     {employees.map(employee => (
                         <option key={employee.id} value={employee.id}>
                             {employee.name} {employee.lastName}

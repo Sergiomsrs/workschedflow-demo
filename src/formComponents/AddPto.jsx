@@ -12,8 +12,8 @@ const pto1 = [
             "terminationDate": "2024-12-31"
         },
         "absenceReason": "Vacaciones",
-        "startDate": "2024-11-11",
-        "terminationDate": "2024-11-17"
+        "startDate": "2024-09-02",
+        "terminationDate": "2024-09-02"
     },
     {
         "id": 50,
