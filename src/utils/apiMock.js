@@ -433,7 +433,7 @@ export const apiMockData = [
                     "PTO",
                     "PTO"
                 ],
-                "shiftDuration": "06:00"
+                "shiftDuration": "00:00"
             },
             {
                 "id": 3,
