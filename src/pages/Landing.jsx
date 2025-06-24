@@ -8,37 +8,11 @@ export const Landing = () => {
     <div className="flex flex-col justify-center items-center w-full">
 
       <section className=" bg-gray-100 w-4/5 ">
-        <div className="bg-gray-100">
-          <section className="pt-24 pb-10">
-            <img
-              className="rounded-full size-16 mb-4"
-              src="/workschedflow-demo/sergio.webp"
-              alt="sergio photo"
-            />
-            <h1
-              className="text-gray-900 dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
-            >
-              Hola! mi nombre es Sergio
-            </h1>
-            <h2
-              className="text-xl lg:text-2xl text-balance max-w-[700px] text-black dark:text-white"
-            >
-              <span>Estudiante de DAM. </span>
-              <span className="text-yellow-800">
-                Conocimientos de Frontend utilizando React, así como de Backend con
-                Java y Spring Boot
-              </span>
-              .<span className="text-red-800"> De Murcia, España. </span>
-              <span className="text-sky-800"
-              >Siempre explorando diferentes tecnologías y lenguajes.</span
-              >
-            </h2>
-          </section>
-        </div>
-        <div className="bg-gray-100">
+
+        <div className="bg-gray-100 mt-10">
           <main className="w3/4">
             <section className="">
-              <h2 className="text-3xl font-bold mb-4">Sobre WorkSchedFlow</h2>
+              <h1 className="text-3xl font-bold mb-4">Sobre WorkSchedFlow</h1>
               <p className="text-lg text-gray-700 mb-6 text-pretty">
                 WorkSchedFlow es una prueba de concepto diseñada para facilitar la gestión de turnos de trabajo.
                 Su objetivo principal es cubrir las necesidades de los gestores de equipos,
